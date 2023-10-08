@@ -32,7 +32,7 @@ def dms2dd(dms: str):
     if results is None:
         return float('NaN')
     degrees, minutes, seconds, decisecond, direction = re.search(pattern, dms).groups()
-    dd = float(degrees) + float(minutes)/60 + (float(seconds) + float(decisecond)*.01) /(60*60)
+    dd = float(degrees) + float(minutes)/60 + (float(seconds) + float(decisecond)*.01) / (60*60)
     if direction in ('S', 'W'):
         dd *= -1
     return dd
@@ -52,8 +52,7 @@ def main(argv):
     artccs = readfile(inputfile)
     artccs = (artccs.groupby(artccs.artcc)['geometry']
               .apply(lambda x: Polygon(x.tolist())))
-    artccs.crs = 'epsg:4326'
-    print(type(artccs))
+    artccs = artccs.set_crs(4326)
     artccs.to_file('artccs.shp', driver='ESRI Shapefile')
 
 
