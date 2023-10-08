@@ -4,7 +4,6 @@ import sys
 
 import geopandas as gpd
 import pandas as pd
-from pandas.core.groupby import DataFrameGroupBy
 from shapely import Polygon
 
 

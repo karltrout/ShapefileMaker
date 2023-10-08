@@ -1,7 +1,7 @@
+import math
 from unittest import TestCase
 
 import main
-import math
 
 
 class Test(TestCase):
